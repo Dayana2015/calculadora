@@ -8,23 +8,22 @@ function renderizarGUI(){
     // 2 agreagar atributos (opcional)
     divCalculadora.setAttribute("id", "calculadora");
     divCalculadora.setAttribute("class", "text-center ");
-    divCalculadora.setAttribute("style" , " width: 50%; magin: 0 auto");
+    divCalculadora.setAttribute("style" , " width: 40%; magin: 0 auto");
     // 3 insertar elementos en el DOM
     document.body.appendChild(divCalculadora);
 
     //div pantalla
     const divPantalla= document.createElement("div");   
     divPantalla.setAttribute("id", "divPantalla");
-    
     divCalculadora.appendChild(divPantalla);
 
     // pantalla
     const pantalla = document.createElement("input");   
     pantalla.setAttribute("id", "pantalla");
     pantalla.setAttribute("type", "text");
-    pantalla.setAttribute("value", "0");
+    pantalla.setAttribute("value", "0" );
     pantalla.setAttribute("disabled", "true");
-    divPantalla.setAttribute("class", "form-control", "text-right");
+    divPantalla.setAttribute("class", "form-control text-center");
     divPantalla.appendChild(pantalla);
 
 
@@ -44,13 +43,16 @@ function renderizarGUI(){
         boton.setAttribute("id","boton" + botones[i]);
         boton.setAttribute("class","btn btn-primary col-3 border-white");
         boton.innerHTML= botones[i];//para agregar algo que contenga html
-        divBotones.lastChild.appendChild(boton);
+        
         //agregar un escuchador de eventos darle a boton la capacidad de escuchar lo evento del usuario
         boton.addEventListener("click", function(){
             procesarEvento(boton);
         });
         divBotones.lastChild.appendChild(boton);
+    
+    
     }
+    
     function procesarEvento(boton){
         let miPantalla=document.getElementById("pantalla");
 
@@ -61,9 +63,14 @@ function renderizarGUI(){
         if(boton.innerHTML != "="){
             miPantalla.value+=boton.innerHTML;
         }else{
-            //evaluar la expresin con math.js
+            try{
+                 //evaluar la expresin con math.js, importante instalar la biblioteca 
             let resultado=math.evaluate(miPantalla.value);
             miPantalla.value=resultado;
+
+            }catch(error){
+                alert("no sirve")
+            }
 
         }
         
