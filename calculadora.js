@@ -1,5 +1,6 @@
 
-var botones=["7","8","9","+","4","5","6","-","1","2","3","0",".","=","/","%"];
+/*var botones=["7","8","9","+","4","5","6","-","1","2","3","0",".","=","/","%"];
+
 function renderizarGUI(){
 
     //division calculadora
@@ -77,4 +78,5 @@ function renderizarGUI(){
     }
 
 }
-renderizarGUI();
+renderizarGUI(); */
+
